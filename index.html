@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Safe Step v2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background" aria-hidden="true">
+      <div class="background__gradient"></div>
+      <div class="background__stars"></div>
+      <div class="background__shooting"></div>
+    </div>
+
+    <main class="shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Safe Step</p>
+          <h1 class="title">A quiet place to pause and reach real support.</h1>
+          <p class="hero-whisper">I’m listening. Start where you can.</p>
+          <p class="subtitle">
+            This is a calm first step for moments that feel heavy. Write what is happening, take a
+            breath, and move toward one real point of support.
+          </p>
+        </div>
+      </header>
+
+      <div class="content-frame">
+        <section class="card composer-card">
+          <label class="label" for="notes">What do you need right now?</label>
+          <div class="modes" aria-label="Support mode">
+            <button type="button" class="mode-btn" data-mode="calm_down" aria-pressed="false">
+              Calm down
+            </button>
+            <button type="button" class="mode-btn" data-mode="overwhelmed" aria-pressed="false">
+              Overwhelmed
+            </button>
+            <button type="button" class="mode-btn" data-mode="confused" aria-pressed="false">
+              Confused
+            </button>
+            <button type="button" class="mode-btn" data-mode="talk" aria-pressed="false">
+              Talk
+            </button>
+          </div>
+          <textarea
+            id="notes"
+            class="textarea"
+            rows="9"
+            placeholder="Write what is happening. You do not need to explain it perfectly."
+          ></textarea>
+          <button type="button" class="primary-btn" id="support-btn">Get Support</button>
+        </section>
+
+        <section class="card response-card" aria-live="polite">
+          <div class="card-head">
+            <h2>Response</h2>
+            <p id="response-status" class="muted">A grounded response will appear here when you're ready.</p>
+          </div>
+          <div class="urgent-box" id="urgent-box" hidden>
+            <p class="urgent-box__title">This feels important right now.</p>
+            <p class="urgent-box__text" id="urgent-text"></p>
+            <div class="row">
+              <button type="button" class="ghost-btn ghost-btn--soft" id="urgent-help-btn">
+                Get urgent help
+              </button>
+              <button type="button" class="ghost-btn" id="urgent-text-btn">
+                Text trusted contact
+              </button>
+            </div>
+          </div>
+          <div class="response-output" id="response-output"></div>
+          <div class="response-tools" id="response-tools" hidden>
+            <button type="button" class="ghost-btn" id="shorter-btn">Shorter</button>
+            <button type="button" class="ghost-btn" id="softer-btn">Softer</button>
+            <button type="button" class="ghost-btn" id="direct-btn">More direct</button>
+            <button type="button" class="ghost-btn" id="next-step-btn">Next step only</button>
+          </div>
+        </section>
+
+        <section class="grid">
+          <section class="card">
+            <h2>Take one safe next step</h2>
+            <div class="stack">
+              <button type="button" class="ghost-btn" id="ready-text-btn">Send a ready text</button>
+              <button type="button" class="ghost-btn" id="find-support-btn">Find support near me</button>
+              <button type="button" class="ghost-btn ghost-btn--soft" id="emergency-help-btn">
+                I need urgent help
+              </button>
+            </div>
+            <p class="hint" id="action-hint" hidden></p>
+          </section>
+
+          <section class="card">
+            <h2>Trusted contact</h2>
+            <p class="muted">Save one person you can reach quickly when words are hard.</p>
+            <div class="stack">
+              <input type="text" class="input" id="contact-name" placeholder="Contact name" />
+              <input type="tel" class="input" id="contact-phone" placeholder="Phone number" />
+              <button type="button" class="ghost-btn" id="save-contact-btn">Save contact</button>
+              <button type="button" class="ghost-btn" id="text-contact-btn">Text saved contact</button>
+              <button type="button" class="ghost-btn" id="call-contact-btn">Call saved contact</button>
+            </div>
+            <p class="hint" id="contact-hint" hidden></p>
+          </section>
+        </section>
+
+        <section class="grid">
+          <section class="card">
+            <h2>60-second reset</h2>
+            <p class="muted">If everything feels too loud, use one quiet minute to come back to this moment.</p>
+            <div class="row">
+              <button type="button" class="ghost-btn" id="grounding-start-btn">Start grounding</button>
+              <button type="button" class="ghost-btn" id="grounding-stop-btn" hidden>Stop</button>
+            </div>
+            <div class="grounding-panel" id="grounding-panel" hidden>
+              <p class="grounding-timer" id="grounding-timer">01:00</p>
+              <p class="hint grounding-step" id="grounding-step"></p>
+            </div>
+          </section>
+
+          <section class="card">
+            <h2>Gentle ideas for right now</h2>
+            <div class="ideas">
+              <button type="button" class="idea-btn" data-hint="Just getting up and walking to the door counts.">
+                Take a short walk
+              </button>
+              <button type="button" class="idea-btn" data-hint="A few sips of cold water can interrupt the spiral.">
+                Drink cold water
+              </button>
+              <button type="button" class="idea-btn" data-hint="A small change in light and air can help your mind unstick.">
+                Go near a window
+              </button>
+              <button type="button" class="idea-btn" data-hint="Let your jaw unclench too if you notice it holding tight.">
+                Drop your shoulders
+              </button>
+            </div>
+            <p class="hint" id="ideas-hint" hidden></p>
+          </section>
+        </section>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
